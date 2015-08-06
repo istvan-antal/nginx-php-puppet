@@ -24,6 +24,5 @@ server {
         fastcgi_param PATH_INFO $fastcgi_script_name;
         fastcgi_param HTTPS off;
 		fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        fastcgi_index index.php;
 	}
 }
