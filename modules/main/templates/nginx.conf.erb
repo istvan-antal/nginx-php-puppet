@@ -8,7 +8,7 @@ server {
 
 	server_name _;
 
-	client_max_body_size 50M;
+	client_max_body_size <%= @maxUploadSize%>M;
 
 	location / {
 		# First attempt to serve request as file, then
