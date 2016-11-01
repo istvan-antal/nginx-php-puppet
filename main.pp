@@ -11,7 +11,7 @@ node default {
     }
 
     file { "/etc/php7/fpm/pool.d/www.conf":
-        require => Package["php7-fpm"],
+        require => Package["php7.0-fpm"],
         source  => "puppet:///modules/main/www.conf",
         notify  => Service["php7-fpm"]
     }
