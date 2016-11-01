@@ -3,7 +3,7 @@ node default {
     $maxUploadedFileSize = $maxUploadSize
     $maxFileUploads = 50
 
-    package { ["php7-fpm", "php7-cli", "php7-curl", "php7-mysql", "php7-redis"]: ensure => "installed" }
+    package { ["php7.0-fpm", "php7.0-cli", "php7.0-curl", "php7.0-mysql", "php7.0-redis"]: ensure => "installed" }
 
     service { "php7-fpm":
         ensure => running,
@@ -35,7 +35,7 @@ node default {
         notify  => Service["nginx"]
     }
 
-    file { '/opt/app/web':
+    file { ['/opt', '/opt/app', '/opt/app/web']:
         ensure => 'directory',
     }
 }
