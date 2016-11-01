@@ -1,4 +1,6 @@
 node default {
+    include '::mysql::server'
+
     $maxUploadSize = 50
     $maxUploadedFileSize = $maxUploadSize
     $maxFileUploads = 50
@@ -8,6 +10,17 @@ node default {
     service { "php7.0-fpm":
         ensure => running,
         enable => true
+    }
+
+    class { '::mysql::server':
+        root_password           => 'mypasdswd',
+        remove_default_accounts => true,
+    }
+
+    mysql::db { 'appdb':
+        user     => 'appuser',
+        password => 'apppass',
+        host     => 'localhost',
     }
 
     #file { "/etc/php7/fpm/pool.d/www.conf":
