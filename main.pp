@@ -17,7 +17,7 @@ node default {
     }
 
     file { "/etc/php7/fpm/php.ini":
-        require => Package["php7-fpm"],
+        require => Package["php7.0-fpm"],
         content  => template('main/php.ini.erb'),
         notify  => Service["php7-fpm"]
     }
