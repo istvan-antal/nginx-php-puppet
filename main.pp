@@ -10,17 +10,17 @@ node default {
         enable => true
     }
 
-    file { "/etc/php7/fpm/pool.d/www.conf":
-        require => Package["php7.0-fpm"],
-        source  => "puppet:///modules/main/www.conf",
-        notify  => Service["php7-fpm"]
-    }
+    #file { "/etc/php7/fpm/pool.d/www.conf":
+    #    require => Package["php7.0-fpm"],
+    #    source  => "puppet:///modules/main/www.conf",
+    #    notify  => Service["php7-fpm"]
+    #}
 
-    file { "/etc/php7/fpm/php.ini":
-        require => Package["php7.0-fpm"],
-        content  => template('main/php.ini.erb'),
-        notify  => Service["php7-fpm"]
-    }
+    #file { "/etc/php7/fpm/php.ini":
+    #    require => Package["php7.0-fpm"],
+    #    content  => template('main/php.ini.erb'),
+    #    notify  => Service["php7-fpm"]
+    #}
 
     package { "nginx": ensure => "installed" }
 
