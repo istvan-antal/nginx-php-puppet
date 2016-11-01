@@ -1,6 +1,4 @@
 node default {
-    include '::mysql::server'
-
     $maxUploadSize = 50
     $maxUploadedFileSize = $maxUploadSize
     $maxFileUploads = 50
