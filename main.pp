@@ -5,7 +5,7 @@ node default {
 
     package { ["php7.0-fpm", "php7.0-cli", "php7.0-curl", "php7.0-mysql", "php-redis"]: ensure => "installed" }
 
-    service { "php7-fpm":
+    service { "php7.0-fpm":
         ensure => running,
         enable => true
     }
