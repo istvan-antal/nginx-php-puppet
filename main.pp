@@ -3,7 +3,7 @@ node default {
     $maxUploadedFileSize = $maxUploadSize
     $maxFileUploads = 50
 
-    package { ["php7.0-fpm", "php7.0-cli", "php7.0-curl", "php7.0-mysql", "php-xml", "php-redis"]: ensure => "installed" }
+    package { ["php7.0-fpm", "php7.0-cli", "php7.0-curl", "php7.0-mysql", "php-mbstring", "php-xml", "php-redis"]: ensure => "installed" }
 
     service { "php7.0-fpm":
         ensure => running,
