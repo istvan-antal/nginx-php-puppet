@@ -1,14 +1,10 @@
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
+	server_name _;
+	client_max_body_size <%= @maxUploadSize%>M;
 
 	root /opt/app/web;
-
-	index index.php;
-
-	server_name _;
-
-	client_max_body_size <%= @maxUploadSize%>M;
 
 	location / {
 		# First attempt to serve request as file, then
