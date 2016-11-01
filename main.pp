@@ -3,23 +3,23 @@ node default {
     $maxUploadedFileSize = $maxUploadSize
     $maxFileUploads = 50
 
-    package { ["php5-fpm", "php5-cli", "php5-curl", "php5-mysql", "php5-redis"]: ensure => "installed" }
+    package { ["php7-fpm", "php7-cli", "php7-curl", "php7-mysql", "php7-redis"]: ensure => "installed" }
 
-    service { "php5-fpm":
+    service { "php7-fpm":
         ensure => running,
         enable => true
     }
 
-    file { "/etc/php5/fpm/pool.d/www.conf":
-        require => Package["php5-fpm"],
+    file { "/etc/php7/fpm/pool.d/www.conf":
+        require => Package["php7-fpm"],
         source  => "puppet:///modules/main/www.conf",
-        notify  => Service["php5-fpm"]
+        notify  => Service["php7-fpm"]
     }
 
-    file { "/etc/php5/fpm/php.ini":
-        require => Package["php5-fpm"],
+    file { "/etc/php7/fpm/php.ini":
+        require => Package["php7-fpm"],
         content  => template('main/php.ini.erb'),
-        notify  => Service["php5-fpm"]
+        notify  => Service["php7-fpm"]
     }
 
     package { "nginx": ensure => "installed" }
@@ -33,5 +33,9 @@ node default {
         require => Package["nginx"],
         content  => template('main/nginx.conf.erb'),
         notify  => Service["nginx"]
+    }
+
+    file { '/opt/app/web':
+        ensure => 'directory',
     }
 }
